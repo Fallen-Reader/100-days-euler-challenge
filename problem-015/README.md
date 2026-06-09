@@ -50,17 +50,17 @@ So the question reduces to:
 
 This is exactly the definition of the binomial coefficient:
 
-\[
+$$
 \binom{2N}{N}
-\]
+$$
 
 which means “2N choose N”.
 
 Equivalently, you could choose where the `D`s go, but that gives the same count:
 
-\[
+$$
 \binom{2N}{N} = \binom{2N}{2N - N}
-\]
+$$
 
 ---
 
@@ -68,9 +68,9 @@ Equivalently, you could choose where the `D`s go, but that gives the same count:
 
 The binomial coefficient \(\binom{n}{k}\) counts the number of ways to choose `k` items from `n` items, ignoring order, and has the formula:
 
-\[
+$$
 \binom{n}{k} = \frac{n!}{k! (n-k)!}
-\]
+$$
 
 In our lattice path problem:
 
@@ -79,10 +79,10 @@ In our lattice path problem:
 
 so:
 
-\[
+$$
 \text{number of paths} = \binom{2N}{N}
 = \frac{(2N)!}{N! N!}
-\]
+$$
 
 This directly gives the count of all shortest paths on the grid.
 
@@ -110,9 +110,9 @@ Using the combination formula:
 
 Directly using factorials can overflow even 64-bit integers when computing `(2N)!`, so a safer method uses a multiplicative formula for the binomial coefficient:
 
-\[
+$$
 \binom{2N}{N} = \prod_{i=1}^{N} \frac{2N + 1 - i}{i}
-\]
+$$
 
 In C++:
 
@@ -129,7 +129,7 @@ long long lattice_path(int gridSize) {
 }
 ```
 
-This computes \(\binom{2N}{N}\) directly and safely for `N = 20` (the classic Project Euler case).
+This computes $$\binom{2N}{N}$$directly and safely for `N = 20` (the classic Project Euler case).
 
 ---
 
@@ -138,6 +138,6 @@ This computes \(\binom{2N}{N}\) directly and safely for `N = 20` (the classic Pr
 1. Every shortest path is exactly `N` rights and `N` downs.
 2. A path is just an ordering of those moves.
 3. Counting paths = counting distinct orderings of `N` `R`s and `N` `D`s in a length `2N` sequence.
-4. That is “2N choose N” = \(\binom{2N}{N}\).
+4. That is “2N choose N” = $$\binom{2N}{N}$$.
 
 So combinations are not just a trick; they are a direct translation of the structure of the paths into a counting problem.
