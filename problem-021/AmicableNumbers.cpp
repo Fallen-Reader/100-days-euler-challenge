@@ -29,7 +29,7 @@ int main() {
             
             if (i == flag2) {
                 cout << "Amicable pair: " << i << " and " << flag1 << endl;
-                totalSum += i + flag1;
+                totalSum += i;
             }
         }
     }
